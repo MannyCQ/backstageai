@@ -11,6 +11,7 @@ import { Dashboard } from './pages/Dashboard';
 import { Profile } from './pages/Profile';
 import { Outreach } from './pages/Outreach';
 import { Pricing } from './pages/Pricing';
+import { OAuthConsent } from './pages/OAuthConsent';
 import './App.css';
 
 function AppContent() {
@@ -26,6 +27,7 @@ function AppContent() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login user={user} onSignIn={signIn} onOAuthSignIn={signInWithOAuth} />} />
           <Route path="/signup" element={<Signup user={user} onSignUp={signUp} onOAuthSignIn={signInWithOAuth} />} />
+          <Route path="/oauth/consent" element={<OAuthConsent user={user} />} />
           <Route path="/pricing" element={<Pricing profile={profile} />} />
           <Route
             path="/dashboard"
