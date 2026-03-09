@@ -14,7 +14,7 @@ import { Pricing } from './pages/Pricing';
 import './App.css';
 
 function AppContent() {
-  const { user, loading, signIn, signUp, signOut } = useAuth();
+  const { user, loading, signIn, signUp, signInWithOAuth, signOut } = useAuth();
   const { profile, loading: profileLoading, updateProfile } = useProfile(user?.id);
   const { outreach, loading: outreachLoading, addOutreach, updateOutreach, deleteOutreach } = useOutreach(user?.id);
 
@@ -24,8 +24,8 @@ function AppContent() {
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login onSignIn={signIn} />} />
-          <Route path="/signup" element={<Signup onSignUp={signUp} />} />
+          <Route path="/login" element={<Login user={user} onSignIn={signIn} onOAuthSignIn={signInWithOAuth} />} />
+          <Route path="/signup" element={<Signup user={user} onSignUp={signUp} onOAuthSignIn={signInWithOAuth} />} />
           <Route path="/pricing" element={<Pricing profile={profile} />} />
           <Route
             path="/dashboard"
